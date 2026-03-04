@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITS - Імплантація зубів у Львові</title>
+    <meta name="description" content="Сучасна стоматологічна клініка у Львові. Імплантація зубів з довічною гарантією.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Geologica', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            carmine: '#A61840',
+                            carmineHover: '#8F1434',
+                            graphite: '#58595B',
+                            light: '#D9D9D9',
+                            lighter: '#F7F7F7',
+                            white: '#FFFFFF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, visibility; }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .group:hover .group-hover\:scale-110 { transform: scale(1.1); }
+        .group:hover .group-hover\:translate-x-1 { transform: translateX(0.25rem); }
+    </style>
+</head>
+<body class="font-sans text-brand-graphite bg-brand-white antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-brand-white/95 backdrop-blur-md border-b border-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="flex items-center font-light text-3xl tracking-[0.25em] uppercase text-brand-graphite">
+                    <span>ELIT</span>
+                    <svg class="h-[0.68em] w-[0.65em] mr-[0.25em] ml-[0.05em]" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <!-- Top bar (starts furthest right) -->
+                        <rect x="25" y="0" width="75" height="15" fill="currentColor" />
+                        <!-- Middle bar (starts slightly left of top) -->
+                        <rect x="12.5" y="42.5" width="75" height="15" class="fill-brand-carmine" />
+                        <!-- Bottom bar (starts furthest left) -->
+                        <rect x="0" y="85" width="75" height="15" fill="currentColor" />
+                    </svg>
+                    <span>S</span>
+                </a>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-brand-graphite hover:text-brand-carmine font-medium uppercase tracking-widest text-sm transition-colors">Про нас</a>
+                    <a href="#steps" class="text-brand-graphite hover:text-brand-carmine font-medium uppercase tracking-widest text-sm transition-colors">Етапи</a>
+                    <a href="#pricing" class="text-brand-graphite hover:text-brand-carmine font-medium uppercase tracking-widest text-sm transition-colors">Ціни</a>
+                    <a href="#doctors" class="text-brand-graphite hover:text-brand-carmine font-medium uppercase tracking-widest text-sm transition-colors">Лікарі</a>
+                    <a href="#faq" class="text-brand-graphite hover:text-brand-carmine font-medium uppercase tracking-widest text-sm transition-colors">FAQ</a>
+                </nav>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="flex items-center gap-3 mr-2 border-r border-brand-light pr-4">
+                        <a href="https://t.me/+380633349342" target="_blank" class="text-brand-graphite hover:text-brand-carmine transition-colors"><i data-lucide="send" class="w-5 h-5"></i></a>
+                        <a href="viber://chat?number=%2B380633349342" target="_blank" class="text-brand-graphite hover:text-brand-carmine transition-colors"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                        <a href="https://wa.me/380633349342" target="_blank" class="text-brand-graphite hover:text-brand-carmine transition-colors"><i data-lucide="phone-call" class="w-5 h-5"></i></a>
+                    </div>
+                    <a href="tel:+380633349342" class="text-brand-graphite hover:text-brand-carmine flex items-center gap-2 font-medium transition-colors">
+                        <i data-lucide="phone" class="w-4 h-4"></i><span>+38 063 334 93 42</span>
+                    </a>
+                    <a href="#booking" class="bg-brand-carmine text-brand-white hover:bg-brand-carmineHover px-5 py-2.5 text-sm font-medium uppercase tracking-widest transition-colors">Записатись</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-graphite hover:text-brand-carmine focus:outline-none transition-colors">
+                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                        <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-white border-t border-brand-light absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 text-sm font-medium uppercase tracking-widest text-brand-graphite hover:text-brand-carmine hover:bg-brand-lighter transition-colors">Про нас</a>
+                <a href="#steps" class="block px-3 py-3 text-sm font-medium uppercase tracking-widest text-brand-graphite hover:text-brand-carmine hover:bg-brand-lighter transition-colors">Етапи</a>
+                <a href="#pricing" class="block px-3 py-3 text-sm font-medium uppercase tracking-widest text-brand-graphite hover:text-brand-carmine hover:bg-brand-lighter transition-colors">Ціни</a>
+                <a href="#doctors" class="block px-3 py-3 text-sm font-medium uppercase tracking-widest text-brand-graphite hover:text-brand-carmine hover:bg-brand-lighter transition-colors">Лікарі</a>
+                <a href="#faq" class="block px-3 py-3 text-sm font-medium uppercase tracking-widest text-brand-graphite hover:text-brand-carmine hover:bg-brand-lighter transition-colors">FAQ</a>
+                <div class="pt-4 border-t border-brand-light mt-4">
+                    <a href="#booking" class="flex items-center justify-center w-full bg-brand-carmine text-brand-white hover:bg-brand-carmineHover h-11 px-4 py-2 font-medium uppercase tracking-widest transition-colors">Записатись на прийом</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-brand-lighter">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="max-w-2xl fade-in-section">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-carmine/20 bg-brand-white text-brand-carmine text-sm font-medium uppercase tracking-widest mb-6">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full bg-brand-carmine opacity-75"></span>
+                                <span class="relative inline-flex h-2 w-2 bg-brand-carmine"></span>
+                            </span>
+                            Довічна гарантія на імпланти
+                        </div>
+                        <h1 class="text-4xl lg:text-6xl font-bold text-brand-graphite leading-tight mb-6 uppercase tracking-widest">Імплантація зубів <br/><span class="text-brand-carmine">у Львові</span></h1>
+                        <p class="text-lg text-brand-graphite/80 mb-8 leading-relaxed">Чіткий план, прогнозований результат. Відновіть красу та функціональність вашої посмішки за допомогою сучасних технологій.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                            <a href="#booking" class="inline-flex items-center justify-center text-lg font-medium bg-brand-carmine text-brand-white hover:bg-brand-carmineHover h-12 px-8 uppercase tracking-widest transition-colors">Отримати консультацію</a>
+                            <a href="#pricing" class="group inline-flex items-center justify-center text-lg font-medium border border-brand-light bg-brand-white hover:border-brand-carmine text-brand-graphite hover:text-brand-carmine h-12 px-8 uppercase tracking-widest transition-colors">
+                                Дізнатись ціни <i data-lucide="arrow-right" class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-brand-light">
+                            <div class="flex items-center gap-2 text-brand-graphite font-medium"><span class="text-brand-carmine font-bold text-xl leading-none">+</span> Безболісно</div>
+                            <div class="flex items-center gap-2 text-brand-graphite font-medium"><span class="text-brand-carmine font-bold text-xl leading-none">+</span> Швидке загоєння</div>
+                            <div class="flex items-center gap-2 text-brand-graphite font-medium"><span class="text-brand-carmine font-bold text-xl leading-none">+</span> Преміум матеріали</div>
+                        </div>
+                    </div>
+                    <div class="relative lg:h-[600px] overflow-hidden shadow-xl fade-in-section">
+                        <div class="absolute inset-0 bg-brand-graphite/10 z-10 mix-blend-multiply"></div>
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2068&ixlib=rb-4.0.3" alt="Стоматологія" class="absolute inset-0 w-full h-full object-cover grayscale-[20%]"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="py-20 bg-brand-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-start">
+                    <div class="space-y-6 fade-in-section">
+                        <div class="w-16 h-0.5 bg-brand-carmine mb-6"></div>
+                        <h2 class="text-3xl font-bold text-brand-graphite uppercase tracking-widest">Чому не варто відкладати?</h2>
+                        <p class="text-lg text-brand-graphite/80">Відсутність зуба — це зміна прикусу та атрофія кістки.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-brand-graphite"><span class="text-brand-carmine font-bold text-xl leading-none mt-[-2px]">*</span> Зміщення сусідніх зубів</li>
+                            <li class="flex items-start gap-3 text-brand-graphite"><span class="text-brand-carmine font-bold text-xl leading-none mt-[-2px]">*</span> Порушення жувальної функції</li>
+                            <li class="flex items-start gap-3 text-brand-graphite"><span class="text-brand-carmine font-bold text-xl leading-none mt-[-2px]">*</span> Зміна рис обличчя</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-6 bg-brand-lighter p-8 border border-brand-light fade-in-section">
+                        <div class="w-16 h-0.5 bg-brand-carmine mb-6"></div>
+                        <h2 class="text-3xl font-bold text-brand-graphite uppercase tracking-widest">Імплантація — це надійно</h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-brand-graphite"><span class="text-brand-carmine font-bold text-xl leading-none mt-[-2px]">v</span> Новий зуб як природний</li>
+                            <li class="flex items-start gap-3 text-brand-graphite"><span class="text-brand-carmine font-bold text-xl leading-none mt-[-2px]">v</span> Зупиняє атрофію кістки</li>
+                            <li class="flex items-start gap-3 text-brand-graphite"><span class="text-brand-carmine font-bold text-xl leading-none mt-[-2px]">v</span> Довічна гарантія</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Types -->
+        <section class="py-20 bg-brand-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center mb-16">
+                    <div class="w-16 h-0.5 bg-brand-carmine mb-6"></div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brand-graphite text-center uppercase tracking-widest">Види імплантації</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-brand-lighter overflow-hidden border border-brand-light hover:border-brand-carmine hover:shadow-lg transition-all group flex flex-col fade-in-section">
+                        <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale-[20%]"></div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-brand-graphite mb-3 uppercase tracking-widest">Класична двоетапна</h3>
+                            <p class="text-brand-graphite/80 mb-6 flex-grow">Золотий стандарт. Спочатку імплант, потім коронка.</p>
+                            <div class="text-sm font-medium text-brand-carmine bg-brand-white border border-brand-light px-3 py-1 uppercase tracking-widest inline-block self-start">Для більшості випадків</div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-lighter overflow-hidden border border-brand-light hover:border-brand-carmine hover:shadow-lg transition-all group flex flex-col fade-in-section">
+                        <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale-[20%]"></div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-brand-graphite mb-3 uppercase tracking-widest">Одномоментна</h3>
+                            <p class="text-brand-graphite/80 mb-6 flex-grow">Встановлення одразу після видалення зуба.</p>
+                            <div class="text-sm font-medium text-brand-carmine bg-brand-white border border-brand-light px-3 py-1 uppercase tracking-widest inline-block self-start">Економія часу</div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-lighter overflow-hidden border border-brand-light hover:border-brand-carmine hover:shadow-lg transition-all group flex flex-col fade-in-section">
+                        <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale-[20%]"></div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-brand-graphite mb-3 uppercase tracking-widest">All-on-4 / All-on-6</h3>
+                            <p class="text-brand-graphite/80 mb-6 flex-grow">Відновлення всього зубного ряду на 4 або 6 імплантах.</p>
+                            <div class="text-sm font-medium text-brand-carmine bg-brand-white border border-brand-light px-3 py-1 uppercase tracking-widest inline-block self-start">При повній відсутності</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Steps -->
+        <section id="steps" class="py-20 bg-brand-lighter">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center mb-16">
+                    <div class="w-16 h-0.5 bg-brand-carmine mb-6"></div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brand-graphite text-center uppercase tracking-widest">План лікування</h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                    <div class="hidden lg:block absolute top-12 left-0 w-full h-px bg-brand-light -z-10 transform translate-y-4"></div>
+                    <div class="bg-brand-white p-6 border border-brand-light hover:border-brand-carmine transition-colors relative group fade-in-section">
+                        <div class="w-12 h-12 bg-brand-carmine text-brand-white flex items-center justify-center text-xl font-bold mb-6 group-hover:scale-110 transition-transform duration-300">01</div>
+                        <h3 class="text-xl font-bold text-brand-graphite mb-3 uppercase tracking-widest">Діагностика</h3>
+                        <p class="text-brand-graphite/80 text-sm">КТ-знімок та план лікування.</p>
+                    </div>
+                    <div class="bg-brand-white p-6 border border-brand-light hover:border-brand-carmine transition-colors relative group fade-in-section">
+                        <div class="w-12 h-12 bg-brand-carmine text-brand-white flex items-center justify-center text-xl font-bold mb-6 group-hover:scale-110 transition-transform duration-300">02</div>
+                        <h3 class="text-xl font-bold text-brand-graphite mb-3 uppercase tracking-widest">Операція</h3>
+                        <p class="text-brand-graphite/80 text-sm">Встановлення імпланта (30-60 хв).</p>
+                    </div>
+                    <div class="bg-brand-white p-6 border border-brand-light hover:border-brand-carmine transition-colors relative group fade-in-section">
+                        <div class="w-12 h-12 bg-brand-carmine text-brand-white flex items-center justify-center text-xl font-bold mb-6 group-hover:scale-110 transition-transform duration-300">03</div>
+                        <h3 class="text-xl font-bold text-brand-graphite mb-3 uppercase tracking-widest">Загоєння</h3>
+                        <p class="text-brand-graphite/80 text-sm">Приживлення 3-6 місяців.</p>
+                    </div>
+                    <div class="bg-brand-white p-6 border border-brand-light hover:border-brand-carmine transition-colors relative group fade-in-section">
+                        <div class="w-12 h-12 bg-brand-carmine text-brand-white flex items-center justify-center text-xl font-bold mb-6 group-hover:scale-110 transition-transform duration-300">04</div>
+                        <h3 class="text-xl font-bold text-brand-graphite mb-3 uppercase tracking-widest">Коронка</h3>
+                        <p class="text-brand-graphite/80 text-sm">Фіксація постійного зуба.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing" class="py-20 bg-brand-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center mb-16">
+                    <div class="w-16 h-0.5 bg-brand-carmine mb-6"></div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brand-graphite text-center uppercase tracking-widest">Ціни</h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 border border-brand-light bg-brand-white text-center hover:border-brand-carmine transition-colors">
+                        <h3 class="text-xl font-bold text-brand-graphite mb-2 uppercase tracking-widest">Osstem (I етап)</h3>
+                        <div class="text-3xl font-bold text-brand-graphite mb-6">18 700 грн</div>
+                        <ul class="space-y-2 mb-8 text-sm text-brand-graphite/80 text-left">
+                            <li><span class="text-brand-light font-bold mr-2">+</span> Південна Корея</li>
+                            <li><span class="text-brand-light font-bold mr-2">+</span> Встановлення імпланта</li>
+                        </ul>
+                        <a href="#booking" class="block w-full py-2 border border-brand-light hover:border-brand-carmine hover:text-brand-carmine uppercase tracking-widest transition-colors">Записатись</a>
+                    </div>
+                    <div class="p-6 border border-brand-light bg-brand-white text-center hover:border-brand-carmine transition-colors">
+                        <h3 class="text-xl font-bold text-brand-graphite mb-2 uppercase tracking-widest">Straumann (I етап)</h3>
+                        <div class="text-3xl font-bold text-brand-graphite mb-6">26 450 грн</div>
+                        <ul class="space-y-2 mb-8 text-sm text-brand-graphite/80 text-left">
+                            <li><span class="text-brand-light font-bold mr-2">+</span> Швейцарія</li>
+                            <li><span class="text-brand-light font-bold mr-2">+</span> Преміум сегмент</li>
+                        </ul>
+                        <a href="#booking" class="block w-full py-2 border border-brand-light hover:border-brand-carmine hover:text-brand-carmine uppercase tracking-widest transition-colors">Записатись</a>
+                    </div>
+                    <div class="relative p-6 border border-brand-carmine bg-brand-lighter text-center shadow-lg z-10">
+                        <div class="absolute top-0 right-0 bg-brand-carmine text-brand-white text-xs font-bold px-3 py-1 uppercase tracking-widest">РЕКОМЕНДОВАНО</div>
+                        <h3 class="text-xl font-bold text-brand-graphite mb-2 uppercase tracking-widest">Osstem «під ключ»</h3>
+                        <div class="text-3xl font-bold text-brand-graphite mb-6">47 200 грн</div>
+                        <ul class="space-y-2 mb-8 text-sm text-brand-graphite/80 text-left">
+                            <li><span class="text-brand-carmine font-bold mr-2">+</span> Імплант + встановлення</li>
+                            <li><span class="text-brand-carmine font-bold mr-2">+</span> Коронка цирконій</li>
+                        </ul>
+                        <a href="#booking" class="block w-full py-2 bg-brand-carmine text-brand-white hover:bg-brand-carmineHover uppercase tracking-widest transition-colors">Записатись</a>
+                    </div>
+                    <div class="relative p-6 border border-brand-carmine bg-brand-lighter text-center shadow-lg z-10">
+                        <div class="absolute top-0 right-0 bg-brand-carmine text-brand-white text-xs font-bold px-3 py-1 uppercase tracking-widest">РЕКОМЕНДОВАНО</div>
+                        <h3 class="text-xl font-bold text-brand-graphite mb-2 uppercase tracking-widest">Straumann «під ключ»</h3>
+                        <div class="text-3xl font-bold text-brand-graphite mb-6">55 350 грн</div>
+                        <ul class="space-y-2 mb-8 text-sm text-brand-graphite/80 text-left">
+                            <li><span class="text-brand-carmine font-bold mr-2">+</span> Імплант + встановлення</li>
+                            <li><span class="text-brand-carmine font-bold mr-2">+</span> Коронка цирконій</li>
+                        </ul>
+                        <a href="#booking" class="block w-full py-2 bg-brand-carmine text-brand-white hover:bg-brand-carmineHover uppercase tracking-widest transition-colors">Записатись</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Doctors -->
+        <section id="doctors" class="py-20 bg-brand-lighter">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative overflow-hidden shadow-xl aspect-square fade-in-section">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=2070" class="absolute inset-0 w-full h-full object-cover grayscale-[20%]">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-graphite/90 to-transparent p-8">
+                            <h3 class="text-2xl font-bold text-brand-white uppercase tracking-widest">Солтис Михайло Васильович</h3>
+                            <p class="text-brand-white/80 uppercase tracking-widest text-sm mt-2">Головний лікар, Хірург-імплантолог</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6 fade-in-section">
+                        <div class="w-16 h-0.5 bg-brand-carmine mb-6"></div>
+                        <h2 class="text-3xl font-bold text-brand-graphite uppercase tracking-widest">Досвід, якому довіряють</h2>
+                        <p class="text-lg text-brand-graphite/80">Наші хірурги мають профільну освіту та багаторічний досвід.</p>
+                        <div class="flex gap-8 border-y border-brand-light py-6">
+                            <div><div class="text-3xl font-bold text-brand-carmine">15+</div><div class="text-brand-graphite/80 uppercase tracking-widest text-sm mt-1">Років досвіду</div></div>
+                            <div><div class="text-3xl font-bold text-brand-carmine">5k+</div><div class="text-brand-graphite/80 uppercase tracking-widest text-sm mt-1">Імплантів</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 bg-brand-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center mb-16">
+                    <div class="w-16 h-0.5 bg-brand-carmine mb-6"></div>
+                    <h2 class="text-3xl font-bold text-center text-brand-graphite uppercase tracking-widest">Часті питання</h2>
+                </div>
+                <div class="space-y-2">
+                    <div class="faq-item">
+                        <button class="faq-btn w-full flex justify-between items-center py-6 text-left font-bold text-brand-graphite uppercase tracking-widest text-sm group">
+                            <span class="pr-4 leading-relaxed">Скільки часу триває імплантація — від встановлення до коронки?</span>
+                            <i data-lucide="arrow-down" class="w-5 h-5 text-brand-graphite group-hover:text-brand-carmine transition-all duration-300 shrink-0"></i>
+                        </button>
+                        <div class="hidden">
+                            <div class="w-full h-[3px] bg-brand-carmine mb-6"></div>
+                            <div class="text-brand-graphite/80 text-base leading-relaxed pb-8">
+                                В середньому, від встановлення імпланта до фіксації постійної коронки проходить 3-6 місяців. Цей час необхідний для надійного приживлення імпланта в кістковій тканині. Індивідуальні терміни залежать від вашого клінічного випадку.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-btn w-full flex justify-between items-center py-6 text-left font-bold text-brand-graphite uppercase tracking-widest text-sm group">
+                            <span class="pr-4 leading-relaxed">Чи болюча процедура імплантації?</span>
+                            <i data-lucide="arrow-down" class="w-5 h-5 text-brand-graphite group-hover:text-brand-carmine transition-all duration-300 shrink-0"></i>
+                        </button>
+                        <div class="hidden">
+                            <div class="w-full h-[3px] bg-brand-carmine mb-6"></div>
+                            <div class="text-brand-graphite/80 text-base leading-relaxed pb-8">
+                                Ні, процедура повністю безболісна, оскільки виконується під ефективною місцевою анестезією. Легкий дискомфорт після втручання, якщо він виникає, легко контролюється звичайними знеболювальними.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-btn w-full flex justify-between items-center py-6 text-left font-bold text-brand-graphite uppercase tracking-widest text-sm group">
+                            <span class="pr-4 leading-relaxed">Які є протипоказання до встановлення імпланта?</span>
+                            <i data-lucide="arrow-down" class="w-5 h-5 text-brand-graphite group-hover:text-brand-carmine transition-all duration-300 shrink-0"></i>
+                        </button>
+                        <div class="hidden">
+                            <div class="w-full h-[3px] bg-brand-carmine mb-6"></div>
+                            <div class="text-brand-graphite/80 text-base leading-relaxed pb-8">
+                                Існують абсолютні протипоказання (деякі захворювання крові, онкологія) та відносні (вагітність, неконтрольований діабет, недостатній об'єм кістки). Більшість відносних протипоказань успішно вирішуються під час підготовки до операції.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-btn w-full flex justify-between items-center py-6 text-left font-bold text-brand-graphite uppercase tracking-widest text-sm group">
+                            <span class="pr-4 leading-relaxed">Чим імплант кращий за міст або знімний протез?</span>
+                            <i data-lucide="arrow-down" class="w-5 h-5 text-brand-graphite group-hover:text-brand-carmine transition-all duration-300 shrink-0"></i>
+                        </button>
+                        <div class="hidden">
+                            <div class="w-full h-[3px] bg-brand-carmine mb-6"></div>
+                            <div class="text-brand-graphite/80 text-base leading-relaxed pb-8">
+                                На відміну від моста, імплант не потребує обточування сусідніх здорових зубів. Він функціонує як власний корінь, запобігаючи втраті кісткової тканини, і є набагато надійнішим та комфортнішим за знімний протез.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-btn w-full flex justify-between items-center py-6 text-left font-bold text-brand-graphite uppercase tracking-widest text-sm group">
+                            <span class="pr-4 leading-relaxed">Який термін служби зубного імпланта?</span>
+                            <i data-lucide="arrow-down" class="w-5 h-5 text-brand-graphite group-hover:text-brand-carmine transition-all duration-300 shrink-0"></i>
+                        </button>
+                        <div class="hidden">
+                            <div class="w-full h-[3px] bg-brand-carmine mb-6"></div>
+                            <div class="text-brand-graphite/80 text-base leading-relaxed pb-8">
+                                При правильному догляді за ротовою порожниною та регулярних профілактичних оглядах у стоматолога, якісні імпланти можуть служити все життя. Ми використовуємо преміальні системи, які мають найвищий відсоток приживлення.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking -->
+        <section id="booking" class="py-20 bg-brand-lighter text-center border-t border-brand-light">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="flex flex-col items-center mb-6">
+                    <div class="w-16 h-0.5 bg-brand-carmine mb-6"></div>
+                    <h2 class="text-3xl font-bold text-brand-graphite uppercase tracking-widest">Запишіться на консультацію</h2>
+                </div>
+                <div class="bg-brand-white p-8 shadow-lg max-w-lg mx-auto border border-brand-light">
+                    <div id="success-message" class="hidden py-8">
+                        <div class="text-brand-carmine text-5xl mb-4 font-bold">v</div>
+                        <h3 class="text-2xl font-bold mb-2 text-brand-graphite uppercase tracking-widest">Дякуємо!</h3>
+                        <p class="text-brand-graphite/80">Ми зателефонуємо вам.</p>
+                    </div>
+                    <form id="booking-form" class="space-y-4 text-left">
+                        <input type="text" required class="w-full px-4 py-3 border border-brand-light focus:border-brand-carmine focus:ring-1 focus:ring-brand-carmine outline-none transition-colors" placeholder="Ваше ім'я">
+                        <input type="tel" required class="w-full px-4 py-3 border border-brand-light focus:border-brand-carmine focus:ring-1 focus:ring-brand-carmine outline-none transition-colors" placeholder="Номер телефону">
+                        <button type="submit" class="w-full h-12 bg-brand-carmine text-brand-white font-bold hover:bg-brand-carmineHover uppercase tracking-widest transition-colors">Записатись</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-graphite text-brand-white/80 py-16 border-t border-brand-light">
+        <div class="max-w-[1400px] mx-auto px-4 text-center md:text-left grid lg:grid-cols-12 gap-8 lg:gap-4 xl:gap-8">
+            <div class="lg:col-span-3">
+                <a href="#" class="flex items-center justify-center md:justify-start font-light text-2xl tracking-[0.25em] uppercase text-brand-white mb-4">
+                    <span>ELIT</span>
+                    <svg class="h-[0.68em] w-[0.65em] mr-[0.25em] ml-[0.05em]" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <!-- Top bar (starts furthest right) -->
+                        <rect x="25" y="0" width="75" height="15" fill="currentColor" />
+                        <!-- Middle bar (starts slightly left of top) -->
+                        <rect x="12.5" y="42.5" width="75" height="15" class="fill-brand-carmine" />
+                        <!-- Bottom bar (starts furthest left) -->
+                        <rect x="0" y="85" width="75" height="15" fill="currentColor" />
+                    </svg>
+                    <span>S</span>
+                </a>
+                <p class="text-sm text-brand-white/60">Стоматологія у Львові.</p>
+            </div>
+            <div class="lg:col-span-2">
+                <h4 class="text-brand-white font-bold mb-6">Навігація</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#about" class="hover:text-brand-carmine transition-colors">Про нас</a></li>
+                    <li><a href="#pricing" class="hover:text-brand-carmine transition-colors">Ціни</a></li>
+                </ul>
+            </div>
+            <div class="lg:col-span-7">
+                <h4 class="text-brand-white font-bold mb-6">Контакти</h4>
+                <div class="grid xl:grid-cols-2 gap-8 xl:gap-6">
+                    <!-- Branch 1 -->
+                    <div class="flex justify-between text-left gap-4">
+                        <div class="space-y-2 min-w-max">
+                            <a href="https://maps.google.com/?q=Львів,вул.Газова,7" target="_blank" class="text-brand-white/80 hover:text-brand-white transition-colors underline underline-offset-4 text-sm block mb-4 whitespace-nowrap">Прокласти маршрут</a>
+                            <p class="text-brand-white text-sm whitespace-nowrap">Львів, вул. Газова, 7</p>
+                            <a href="tel:+380633349342" class="text-brand-white hover:text-brand-carmine transition-colors text-sm block whitespace-nowrap">+38 063 334 93 42</a>
+                            <div class="flex gap-4 pt-2">
+                                <a href="viber://chat?number=%2B380633349342" target="_blank" class="text-brand-white/80 hover:text-brand-carmine transition-colors"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                                <a href="https://t.me/+380633349342" target="_blank" class="text-brand-white/80 hover:text-brand-carmine transition-colors"><i data-lucide="send" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-right text-sm text-brand-white/80 space-y-2 whitespace-nowrap">
+                            <p>ПН-ПТ – 8:00-20:00</p>
+                            <p>СБ – 8:00-17:00</p>
+                            <p>НД – ВИХІДНИЙ</p>
+                        </div>
+                    </div>
+                    <!-- Branch 2 -->
+                    <div class="flex justify-between text-left xl:border-l xl:border-brand-white/20 xl:pl-6 gap-4">
+                        <div class="space-y-2 min-w-max">
+                            <a href="https://maps.google.com/?q=Львів,вул.Леонтовича,3" target="_blank" class="text-brand-white/80 hover:text-brand-white transition-colors underline underline-offset-4 text-sm block mb-4 whitespace-nowrap">Прокласти маршрут</a>
+                            <p class="text-brand-white text-sm whitespace-nowrap">Львів, вул. Леонтовича, 3</p>
+                            <a href="tel:+380676435362" class="text-brand-white hover:text-brand-carmine transition-colors text-sm block whitespace-nowrap">+38 067 643 53 62</a>
+                            <div class="flex gap-4 pt-2">
+                                <a href="viber://chat?number=%2B380676435362" target="_blank" class="text-brand-white/80 hover:text-brand-carmine transition-colors"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                                <a href="https://t.me/+380676435362" target="_blank" class="text-brand-white/80 hover:text-brand-carmine transition-colors"><i data-lucide="send" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-right text-sm text-brand-white/80 space-y-2 whitespace-nowrap">
+                            <p>ПН-ПТ – 8:00-20:00</p>
+                            <p>СБ – 8:00-17:00</p>
+                            <p>НД – ВИХІДНИЙ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loaded-badge" class="fixed bottom-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold z-50 shadow-lg">Loaded</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // Mobile Menu
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            menuBtn?.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+
+            // FAQ
+            document.querySelectorAll('.faq-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    content.classList.toggle('hidden');
+                    const icon = btn.querySelector('[data-lucide]');
+                    if(content.classList.contains('hidden')) icon.style.transform = 'rotate(0deg)';
+                    else icon.style.transform = 'rotate(180deg)';
+                });
+            });
+
+            // Form
+            const form = document.getElementById('booking-form');
+            const success = document.getElementById('success-message');
+            form?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                const originalText = btn.innerText;
+                btn.innerText = 'Відправка...';
+                setTimeout(() => {
+                    form.classList.add('hidden');
+                    success.classList.remove('hidden');
+                }, 1000);
+            });
+
+            // Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            document.querySelectorAll('.fade-in-section').forEach(s => observer.observe(s));
+            
+            console.log("Page loaded");
+        });
+    </script>
+</body>
+</html>

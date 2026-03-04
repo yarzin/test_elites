@@ -1,0 +1,13 @@
+{
+  "name": "html-preview",
+  "version": "1.0.0",
+  "description": "Static HTML server for preview",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "echo 'No build needed'",
+    "start": "vite preview --host 0.0.0.0 --port 3000"
+  },
+  "devDependencies": {
+    "vite": "^5.1.4"
+  }
+}
